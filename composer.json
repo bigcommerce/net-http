@@ -1,0 +1,17 @@
+{
+    "name": "bigcommerce/net-http",
+	"type": "library",
+    "description": "A basic HTTP client",
+    "authors": [
+        {
+            "name": "Mark Rickerby",
+            "email": "mark.rickerby@bigcommerce.com"
+        }
+    ],
+	"license": "MIT",
+	"autoload": {
+		"psr-0": {
+			"Net_": "Net/"
+		}
+	}
+}
