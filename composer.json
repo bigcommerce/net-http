@@ -1,6 +1,6 @@
 {
-    "name": "bigcommerce/net-http",
-	"type": "library",
+    "name": "net/http",
+    "type": "library",
     "description": "A basic HTTP client",
     "authors": [
         {
