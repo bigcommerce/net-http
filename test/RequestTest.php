@@ -7,6 +7,8 @@
  * with this source code for details about modification and redistribution.
  */
 
+require_once __DIR__ . '/HttpTestCase.php';
+
 class RequestTest extends HttpTestCase {
 
 	public function testGetRequest()

@@ -7,6 +7,8 @@
  * with this source code for details about modification and redistribution.
  */
 
+require_once __DIR__ . '/../vendor/autoload.php';
+
 abstract class HttpTestCase extends PHPUnit_Framework_TestCase
 {
 	/**
