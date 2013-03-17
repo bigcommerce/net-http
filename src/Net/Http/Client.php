@@ -343,6 +343,7 @@ class Net_Http_Client {
 			$uri .= "?" . $query;
 		}
 
+		curl_setopt($this->curl, CURLOPT_CUSTOMREQUEST, 'GET');
 		curl_setopt($this->curl, CURLOPT_URL, $uri);
 		curl_setopt($this->curl, CURLOPT_HTTPGET, true);
 		curl_exec($this->curl);
@@ -366,6 +367,7 @@ class Net_Http_Client {
 			$data = http_build_query($data);
 		}
 
+		curl_setopt($this->curl, CURLOPT_CUSTOMREQUEST, 'POST');
 		curl_setopt($this->curl, CURLOPT_URL, $uri);
 		curl_setopt($this->curl, CURLOPT_POST, true);
 		curl_setopt($this->curl, CURLOPT_POSTFIELDS, $data);
@@ -385,6 +387,7 @@ class Net_Http_Client {
 	{
 		$this->initializeRequest();
 
+		curl_setopt($this->curl, CURLOPT_CUSTOMREQUEST, 'HEAD');
 		curl_setopt($this->curl, CURLOPT_URL, $uri);
 		curl_setopt($this->curl, CURLOPT_NOBODY, true);
 		curl_exec($this->curl);
@@ -413,6 +416,7 @@ class Net_Http_Client {
 		curl_setopt($this->curl, CURLOPT_INFILE, $handle);
 		curl_setopt($this->curl, CURLOPT_INFILESIZE, strlen($data));
 
+		curl_setopt($this->curl, CURLOPT_CUSTOMREQUEST, 'PUT');
 		curl_setopt($this->curl, CURLOPT_URL, $uri);
 		curl_setopt($this->curl, CURLOPT_PUT, true);
 		curl_exec($this->curl);
