@@ -528,6 +528,16 @@ class Net_Http_Client {
 	{
 		return $this->responseHeaders;
 	}
+	
+	/**
+	 * Return information about the request.
+	 *
+	 * @see http://www.php.net/manual/en/function.curl-getinfo.php
+	 */
+	public function getInfo()
+	{
+		return curl_getinfo($this->curl);
+	}
 
 	/**
 	 * Close the cURL resource when the instance is garbage collected
