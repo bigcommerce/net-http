@@ -281,9 +281,9 @@ class Net_Http_Client {
 		if ($this->failOnError) {
 			$status = $this->getStatus();
 			if ($status >= 400 && $status <= 499) {
-				throw new Net_Http_ClientError($this->getStatusMessage(), $status);
+				throw new Net_Http_ClientError($this->getStatusMessage(), $status, $this->getResponse());
 			} elseif ($status >= 500 && $status <= 599) {
-				throw new Net_Http_ServerError($this->getStatusMessage(), $status);
+				throw new Net_Http_ServerError($this->getStatusMessage(), $status, $this->getResponse());
 			}
 		}
 		if ($this->followLocation) {

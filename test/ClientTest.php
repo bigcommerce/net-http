@@ -111,6 +111,8 @@ class ClientTest extends HttpTestCase
 		} catch(Net_Http_ClientError $e) {
 			$this->assertContains('Not Found', $e->getMessage());
 			$this->assertEquals(404, $e->getCode());
+			$this->assertEquals(404, $e->getResponse()->getStatus());
+			$this->assertContains('Resource Not Found', $e->getBody());
 		}
 	}
 
@@ -124,6 +126,8 @@ class ClientTest extends HttpTestCase
 		} catch(Net_Http_ServerError $e) {
 			$this->assertContains('Internal Server Error', $e->getMessage());
 			$this->assertEquals(500, $e->getCode());
+			$this->assertEquals(500, $e->getResponse()->getStatus());
+			$this->assertContains('The Server Exploded', $e->getBody());
 		}
 	}
 }
