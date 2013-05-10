@@ -11,7 +11,7 @@
 	"license": "MIT",
 	"autoload": {
 		"psr-0": {
-			"Net_": "src/"
+			"Net": "src/"
 		}
 	},
     "require-dev": {
