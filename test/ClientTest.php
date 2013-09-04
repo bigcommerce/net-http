@@ -2,7 +2,7 @@
 /**
  * Copyright (c) 2011, BigCommerce Pty. Ltd. <http://www.bigcommerce.com>
  * All rights reserved.
- * 
+ *
  * This library is free software; refer to the terms in the LICENSE file found
  * with this source code for details about modification and redistribution.
  */
@@ -26,6 +26,13 @@ class ClientTest extends HttpTestCase
 		$client->post(self::HOST.'/basic/post', array("greeting"=>"Hello", "from"=>"Net_Http_Client"));
 		$this->assertEquals(200, $client->getStatus());
 		$this->assertContains("Hello back", $client->getBody());
+	}
+
+	public function testPutRequest()
+	{
+		$client = new Net_Http_Client();
+		$client->post(self::HOST.'/basic/put', array("greeting"=>"Hello", "from"=>"Net_Http_Client"));
+		$this->assertEquals(200, $client->getStatus());
 	}
 
 	public function testHeadRequestWithSetHeader()

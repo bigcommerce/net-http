@@ -2,7 +2,7 @@
 /**
  * Copyright (c) 2011, BigCommerce Pty. Ltd. <http://www.bigcommerce.com>
  * All rights reserved.
- * 
+ *
  * This library is free software; refer to the terms in the LICENSE file found
  * with this source code for details about modification and redistribution.
  */
@@ -405,20 +405,15 @@ class Net_Http_Client {
 	 *
 	 * @param string $uri URI address to request
 	 * @param string $data data of the request body
+	 * @return Net_Http_Client
 	 */
 	public function put($uri, $data)
 	{
 		$this->initializeRequest();
 
-		$handle = tmpfile();
-		fwrite($handle, $data);
-		fseek($handle, 0);
-		curl_setopt($this->curl, CURLOPT_INFILE, $handle);
-		curl_setopt($this->curl, CURLOPT_INFILESIZE, strlen($data));
-
 		curl_setopt($this->curl, CURLOPT_CUSTOMREQUEST, 'PUT');
 		curl_setopt($this->curl, CURLOPT_URL, $uri);
-		curl_setopt($this->curl, CURLOPT_PUT, true);
+		curl_setopt($this->curl, CURLOPT_POSTFIELDS, $data);
 		curl_exec($this->curl);
 
 		$this->checkResponse();
@@ -528,7 +523,7 @@ class Net_Http_Client {
 	{
 		return $this->responseHeaders;
 	}
-	
+
 	/**
 	 * Return information about the request.
 	 *
