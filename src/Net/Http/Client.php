@@ -36,12 +36,6 @@
  * @todo return Net_Http_Client_Http_Response object from request methods instead of self-reference
  */
 class Net_Http_Client {
-
-	/**
-	 * @var cURL resource handle
-	 */
-	private $curl;
-
 	/**
 	 * @todo wrap this in Http_Request object
 	 * @var hash of HTTP request headers
@@ -102,24 +96,35 @@ class Net_Http_Client {
 	private $errorCode;
 
 	/**
+	 * Options passed to cURL
+	 * @var array
+	 */
+	private $options = array();
+
+	/**
+	 * Returned information about this request/response.
+	 * @var array
+	 */
+	private $responseInfo = array();
+
+	/**
 	 * Initializes the cURL resource handle.
 	 */
 	public function __construct()
 	{
-		$this->curl = curl_init();
 		$this->headers = array();
 
-		curl_setopt($this->curl, CURLOPT_HEADERFUNCTION, array($this, 'parseHeader'));
-		curl_setopt($this->curl, CURLOPT_WRITEFUNCTION, array($this, 'parseBody'));
+		$this->options[CURLOPT_HEADERFUNCTION] = array($this, 'parseHeader');
+		$this->options[CURLOPT_WRITEFUNCTION]  = array($this, 'parseBody');
 
 		if (!ini_get("open_basedir")) {
-			curl_setopt($this->curl, CURLOPT_FOLLOWLOCATION, true);
+			$this->options[CURLOPT_FOLLOWLOCATION] = true;
 		} else {
 			$this->followLocation = true;
 		}
 
 		if ($options = Net_Http::getOptions()) {
-			curl_setopt_array($this->curl, $options);
+			$this->options = array_replace($this->options, $options);
 		}
 	}
 
@@ -151,7 +156,7 @@ class Net_Http_Client {
 	 */
 	public function setBasicAuth($username, $password)
 	{
-		curl_setopt($this->curl, CURLOPT_USERPWD, "$username:$password");
+		$this->options[CURLOPT_USERPWD] = "$username:$password";
 	}
 
 	/**
@@ -162,8 +167,8 @@ class Net_Http_Client {
 	 */
 	public function setTimeout($timeout)
 	{
-		curl_setopt($this->curl, CURLOPT_TIMEOUT, $timeout);
-		curl_setopt($this->curl, CURLOPT_CONNECTTIMEOUT, $timeout);
+		$this->options[CURLOPT_TIMEOUT]        = $timeout;
+		$this->options[CURLOPT_CONNECTTIMEOUT] = $timeout;
 	}
 
 	/**
@@ -174,10 +179,10 @@ class Net_Http_Client {
 	 */
 	public function setProxy($host, $port=false)
 	{
-		curl_setopt($this->curl, CURLOPT_PROXY, $host);
+		$this->options[CURLOPT_PROXY] = $host;
 
 		if ($port) {
-			curl_setopt($this->curl, CURLOPT_PROXYPORT, $port);
+			$this->options[CURLOPT_PROXYPORT] = $port;
 		}
 	}
 
@@ -188,7 +193,7 @@ class Net_Http_Client {
 	 */
 	public function setVerifyPeer($peer=false)
 	{
-		curl_setopt($this->curl, CURLOPT_SSL_VERIFYPEER, false);
+		$this->options[CURLOPT_SSL_VERIFYPEER] = $peer;
 	}
 
 	/**
@@ -199,10 +204,10 @@ class Net_Http_Client {
 	 */
 	public function setSslCertificate($path, $password=false)
 	{
-		curl_setopt($this->curl, CURLOPT_SSLCERT, $path);
+		$this->options[CURLOPT_SSLCERT] = $path;
 
 		if ($password) {
-			curl_setopt($this->curl, CURLOPT_SSLCERTPASSWD, $password);
+			$this->options[CURLOPT_SSLCERTPASSWD] = $password;
 		}
 	}
 
@@ -216,7 +221,7 @@ class Net_Http_Client {
 	 */
 	public function setSslVersion($version)
 	{
-		curl_setopt($this->curl, CURLOPT_SSLVERSION, $version);
+		$this->options[CURLOPT_SSLVERSION] = $version;
 	}
 
 	/**
@@ -261,7 +266,11 @@ class Net_Http_Client {
 		$this->isComplete = false;
 		$this->responseBody = "";
 		$this->responseHeaders = array();
-		curl_setopt($this->curl, CURLOPT_HTTPHEADER, $this->headers);
+		$this->options[CURLOPT_HTTPHEADER] = $this->headers;
+
+		$ch = curl_init();
+		curl_setopt_array($ch, $this->options);
+		return $ch;
 	}
 
 	/**
@@ -273,10 +282,12 @@ class Net_Http_Client {
 	 * @throws Net_Http_NetworkError
 	 * @throws Net_Http_ServerError
 	 */
-	private function checkResponse()
+	private function checkResponse($ch)
 	{
-		if (curl_errno($this->curl)) {
-			throw new Net_Http_NetworkError(curl_error($this->curl), curl_errno($this->curl));
+		$this->responseInfo = curl_getinfo($ch);
+
+		if (curl_errno($ch)) {
+			throw new Net_Http_NetworkError(curl_error($ch), curl_errno($ch));
 		}
 		if ($this->failOnError) {
 			$status = $this->getStatus();
@@ -312,7 +323,7 @@ class Net_Http_Client {
 				if (isset($forwardTo['scheme']) && isset($forwardTo['host'])) {
 					$url = $location;
 				} else {
-					$forwardFrom = parse_url(curl_getinfo($this->curl, CURLINFO_EFFECTIVE_URL));
+					$forwardFrom = parse_url(curl_getinfo($ch, CURLINFO_EFFECTIVE_URL));
 					$url = $forwardFrom['scheme'] . '://' . $forwardFrom['host'] . $location;
 				}
 
@@ -335,7 +346,7 @@ class Net_Http_Client {
 	 */
 	public function get($uri, $query=false)
 	{
-		$this->initializeRequest();
+		$ch = $this->initializeRequest();
 
 		if (is_array($query)) {
 			$uri .= "?" . http_build_query($query);
@@ -343,12 +354,14 @@ class Net_Http_Client {
 			$uri .= "?" . $query;
 		}
 
-		curl_setopt($this->curl, CURLOPT_CUSTOMREQUEST, 'GET');
-		curl_setopt($this->curl, CURLOPT_URL, $uri);
-		curl_setopt($this->curl, CURLOPT_HTTPGET, true);
-		curl_exec($this->curl);
+		curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'GET');
+		curl_setopt($ch, CURLOPT_URL, $uri);
+		curl_setopt($ch, CURLOPT_HTTPGET, true);
+		curl_exec($ch);
 
-		$this->checkResponse();
+		$this->checkResponse($ch);
+
+		curl_close($ch);
 
 		return $this;
 	}
@@ -361,19 +374,21 @@ class Net_Http_Client {
 	 */
 	public function post($uri, $data)
 	{
-		$this->initializeRequest();
+		$ch = $this->initializeRequest();
 
 		if (is_array($data)) {
 			$data = http_build_query($data);
 		}
 
-		curl_setopt($this->curl, CURLOPT_CUSTOMREQUEST, 'POST');
-		curl_setopt($this->curl, CURLOPT_URL, $uri);
-		curl_setopt($this->curl, CURLOPT_POST, true);
-		curl_setopt($this->curl, CURLOPT_POSTFIELDS, $data);
-		curl_exec($this->curl);
+		curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'POST');
+		curl_setopt($ch, CURLOPT_URL, $uri);
+		curl_setopt($ch, CURLOPT_POST, true);
+		curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
+		curl_exec($ch);
 
-		$this->checkResponse();
+		$this->checkResponse($ch);
+
+		curl_close($ch);
 
 		return $this;
 	}
@@ -385,14 +400,16 @@ class Net_Http_Client {
 	 */
 	public function head($uri)
 	{
-		$this->initializeRequest();
+		$ch = $this->initializeRequest();
 
-		curl_setopt($this->curl, CURLOPT_CUSTOMREQUEST, 'HEAD');
-		curl_setopt($this->curl, CURLOPT_URL, $uri);
-		curl_setopt($this->curl, CURLOPT_NOBODY, true);
-		curl_exec($this->curl);
+		curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'HEAD');
+		curl_setopt($ch, CURLOPT_URL, $uri);
+		curl_setopt($ch, CURLOPT_NOBODY, true);
+		curl_exec($ch);
 
-		$this->checkResponse();
+		$this->checkResponse($ch);
+
+		curl_close($ch);
 
 		return $this;
 	}
@@ -408,20 +425,22 @@ class Net_Http_Client {
 	 */
 	public function put($uri, $data)
 	{
-		$this->initializeRequest();
+		$ch = $this->initializeRequest();
 
 		$handle = tmpfile();
 		fwrite($handle, $data);
 		fseek($handle, 0);
-		curl_setopt($this->curl, CURLOPT_INFILE, $handle);
-		curl_setopt($this->curl, CURLOPT_INFILESIZE, strlen($data));
+		curl_setopt($ch, CURLOPT_INFILE, $handle);
+		curl_setopt($ch, CURLOPT_INFILESIZE, strlen($data));
 
-		curl_setopt($this->curl, CURLOPT_CUSTOMREQUEST, 'PUT');
-		curl_setopt($this->curl, CURLOPT_URL, $uri);
-		curl_setopt($this->curl, CURLOPT_PUT, true);
-		curl_exec($this->curl);
+		curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'PUT');
+		curl_setopt($ch, CURLOPT_URL, $uri);
+		curl_setopt($ch, CURLOPT_PUT, true);
+		curl_exec($ch);
 
-		$this->checkResponse();
+		$this->checkResponse($ch);
+
+		curl_close($ch);
 
 		return $this;
 	}
@@ -433,13 +452,15 @@ class Net_Http_Client {
 	 */
 	public function delete($uri)
 	{
-		$this->initializeRequest();
+		$ch = $this->initializeRequest();
 
-		curl_setopt($this->curl, CURLOPT_CUSTOMREQUEST, 'DELETE');
-		curl_setopt($this->curl, CURLOPT_URL, $uri);
-		curl_exec($this->curl);
+		curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'DELETE');
+		curl_setopt($ch, CURLOPT_URL, $uri);
+		curl_exec($ch);
 
-		$this->checkResponse();
+		$this->checkResponse($ch);
+
+		curl_close($ch);
 
 		return $this;
 	}
@@ -484,7 +505,7 @@ class Net_Http_Client {
 	 */
 	public function getStatus()
 	{
-		return curl_getinfo($this->curl, CURLINFO_HTTP_CODE);
+		return $this->responseInfo['http_code'];
 	}
 
 	/**
@@ -528,7 +549,7 @@ class Net_Http_Client {
 	{
 		return $this->responseHeaders;
 	}
-	
+
 	/**
 	 * Return information about the request.
 	 *
@@ -536,14 +557,16 @@ class Net_Http_Client {
 	 */
 	public function getInfo()
 	{
-		return curl_getinfo($this->curl);
+		return $this->responseInfo;
 	}
 
 	/**
-	 * Close the cURL resource when the instance is garbage collected
+	 * Return an array of cURL options
+	 *
+	 * @return array
 	 */
-	public function __destruct()
+	public function getOptions()
 	{
-		curl_close($this->curl);
+		return $this->options;
 	}
 }

@@ -24,6 +24,30 @@ class OptionsTest extends HttpTestCase {
 		}
 	}
 
+	public function testMergesHttpOptions()
+	{
+		Net_Http::setTimeout(1000);
+
+		$client = new Net_Http_Client;
+		$opts   = $client->getOptions();
+
+		$this->assertArrayHasKey(CURLOPT_TIMEOUT, $opts);
+		$this->assertEquals(1000, $opts[CURLOPT_TIMEOUT]);
+	}
+
+	public function testClientOptionsOverrideHttpOptions()
+	{
+		Net_Http::setTimeout(1000);
+
+		$client = new Net_Http_Client;
+		$client->setTimeout(2000);
+
+		$opts = $client->getOptions();
+
+		$this->assertArrayHasKey(CURLOPT_TIMEOUT, $opts);
+		$this->assertEquals(2000, $opts[CURLOPT_TIMEOUT]);
+	}
+
 	public function tearDown()
 	{
 		Net_Http::clearOptions();
