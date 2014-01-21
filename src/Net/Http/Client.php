@@ -124,7 +124,7 @@ class Net_Http_Client {
 		}
 
 		if ($options = Net_Http::getOptions()) {
-			$this->options = array_merge($this->options, $options);
+			$this->options = array_replace($this->options, $options);
 		}
 	}
 
@@ -558,5 +558,15 @@ class Net_Http_Client {
 	public function getInfo()
 	{
 		return $this->responseInfo;
+	}
+
+	/**
+	 * Return an array of cURL options
+	 *
+	 * @return array
+	 */
+	public function getOptions()
+	{
+		return $this->options;
 	}
 }
