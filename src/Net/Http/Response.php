@@ -18,6 +18,7 @@ final class Net_Http_Response
 	private $status;
 	private $message;
 	private $body;
+	private $headers;
 
 	public function __construct($status, $headers, $body='')
 	{
