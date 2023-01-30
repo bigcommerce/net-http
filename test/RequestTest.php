@@ -9,8 +9,8 @@
 
 require_once __DIR__ . '/HttpTestCase.php';
 
-class RequestTest extends HttpTestCase {
-
+class RequestTest extends HttpTestCase
+{
 	public function testGetRequest()
 	{
 		$url = self::HOST.'/basic/get';
@@ -32,5 +32,4 @@ class RequestTest extends HttpTestCase {
 		$this->assertEquals($request->getUrl(), $url);
 		$this->assertEquals($request->getMethod(), 'POST');
 	}
-
 }

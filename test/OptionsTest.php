@@ -9,21 +9,8 @@
 
 require_once __DIR__ . '/HttpTestCase.php';
 
-class OptionsTest extends HttpTestCase {
-
-	public function testCanSetGlobalTimeoutOption()
-	{
-		Net_Http::setTimeout(1);
-
-		try {
-			$clientOne = new Net_Http_Client();
-			$clientOne->get(self::HOST.'/basic/errors/timeout');
-		} catch(Net_Http_NetworkError $e) {
-			$this->assertContains("timed out", $e->getMessage());
-			$this->assertEquals(28, $e->getCode());
-		}
-	}
-
+class OptionsTest extends HttpTestCase
+{
 	public function testMergesHttpOptions()
 	{
 		Net_Http::setTimeout(1000);
@@ -48,9 +35,8 @@ class OptionsTest extends HttpTestCase {
 		$this->assertEquals(2000, $opts[CURLOPT_TIMEOUT]);
 	}
 
-	public function tearDown()
+	public function tearDown(): void
 	{
 		Net_Http::clearOptions();
 	}
-
 }

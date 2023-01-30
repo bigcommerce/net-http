@@ -107,6 +107,8 @@ class Net_Http_Client {
 	 */
 	private $responseInfo = array();
 
+	private bool $isComplete;
+
 	/**
 	 * Initializes the cURL resource handle.
 	 */

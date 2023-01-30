@@ -7,8 +7,8 @@
  * with this source code for details about modification and redistribution.
  */
 
-class ResponseTest extends PHPUnit_Framework_TestCase {
-
+class ResponseTest extends \PHPUnit\Framework\TestCase
+{
 	public function testObjectConstruction()
 	{
 		$response = new Net_Http_Response(200, array("Content-Type"=>"text/plain"), "hello world");
@@ -17,5 +17,4 @@ class ResponseTest extends PHPUnit_Framework_TestCase {
 		$this->assertEquals("text/plain", $response->getHeader("Content-Type"));
 		$this->assertEquals("hello world", $response->getBody());
 	}
-
 }

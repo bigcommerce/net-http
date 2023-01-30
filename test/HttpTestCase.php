@@ -9,10 +9,10 @@
 
 require_once __DIR__ . '/../vendor/autoload.php';
 
-abstract class HttpTestCase extends PHPUnit_Framework_TestCase
+abstract class HttpTestCase extends \PHPUnit\Framework\TestCase
 {
 	/**
 	 * This is a set of URL endpoints I set up a while ago for testing generic HTTP clients
 	 */
-	const HOST = 'http://conformity.sourceforge.net';
+	const HOST = 'https://conformity.sourceforge.net';
 }
