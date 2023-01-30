@@ -11,22 +11,6 @@ require_once __DIR__ . '/HttpTestCase.php';
 
 class OptionsTest extends HttpTestCase
 {
-	public function testCanSetGlobalTimeoutOption()
-	{
-		// The host used for these tests no longer times out, instead it returns "I'm going to sleep...I'm waking up..."
-		$this->markTestSkipped();
-
-		Net_Http::setTimeout(1);
-
-		try {
-			$clientOne = new Net_Http_Client();
-			$clientOne->get(self::HOST.'/basic/errors/timeout');
-		} catch(Net_Http_NetworkError $e) {
-			$this->assertStringContainsString("timed out", $e->getMessage());
-			$this->assertEquals(28, $e->getCode());
-		}
-	}
-
 	public function testMergesHttpOptions()
 	{
 		Net_Http::setTimeout(1000);
