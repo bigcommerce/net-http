@@ -16,6 +16,7 @@ jobs:
       - ci/pre-setup
       - php/composer-install
       - php/unit-phpunit
+      - run: ./script/phpstan
 
 workflows:
   version: 2
