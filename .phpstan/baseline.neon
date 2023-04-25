@@ -1,0 +1,606 @@
+parameters:
+	ignoreErrors:
+		-
+			message: "#^Default value of the parameter \\#2 \\$port \\(false\\) of method Net_Http\\:\\:setProxy\\(\\) is incompatible with type int\\.$#"
+			count: 1
+			path: ../src/Net/Http.php
+
+		-
+			message: "#^Method Net_Http\\:\\:clearOptions\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: ../src/Net/Http.php
+
+		-
+			message: "#^Method Net_Http\\:\\:getOptions\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: ../src/Net/Http.php
+
+		-
+			message: "#^Method Net_Http\\:\\:setBasicAuth\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: ../src/Net/Http.php
+
+		-
+			message: "#^Method Net_Http\\:\\:setBasicAuth\\(\\) has parameter \\$password with no type specified\\.$#"
+			count: 1
+			path: ../src/Net/Http.php
+
+		-
+			message: "#^Method Net_Http\\:\\:setBasicAuth\\(\\) has parameter \\$username with no type specified\\.$#"
+			count: 1
+			path: ../src/Net/Http.php
+
+		-
+			message: "#^Method Net_Http\\:\\:setProxy\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: ../src/Net/Http.php
+
+		-
+			message: "#^Method Net_Http\\:\\:setSslCertificate\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: ../src/Net/Http.php
+
+		-
+			message: "#^Method Net_Http\\:\\:setSslCertificate\\(\\) has parameter \\$password with no type specified\\.$#"
+			count: 1
+			path: ../src/Net/Http.php
+
+		-
+			message: "#^Method Net_Http\\:\\:setSslCertificate\\(\\) has parameter \\$path with no type specified\\.$#"
+			count: 1
+			path: ../src/Net/Http.php
+
+		-
+			message: "#^Method Net_Http\\:\\:setSslVersion\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: ../src/Net/Http.php
+
+		-
+			message: "#^Method Net_Http\\:\\:setTimeout\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: ../src/Net/Http.php
+
+		-
+			message: "#^Method Net_Http\\:\\:setVerifyPeer\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: ../src/Net/Http.php
+
+		-
+			message: "#^Method Net_Http\\:\\:setVerifyPeer\\(\\) has parameter \\$peer with no type specified\\.$#"
+			count: 1
+			path: ../src/Net/Http.php
+
+		-
+			message: "#^PHPDoc tag @param has invalid value \\(boolean\\)\\: Unexpected token \"\\\\n\\\\t \", expected variable at offset 144$#"
+			count: 1
+			path: ../src/Net/Http.php
+
+		-
+			message: "#^Property Net_Http\\:\\:\\$options type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: ../src/Net/Http.php
+
+		-
+			message: "#^Undefined variable\\: \\$path$#"
+			count: 1
+			path: ../src/Net/Http.php
+
+		-
+			message: "#^Access to offset mixed on an unknown class hash\\.$#"
+			count: 1
+			path: ../src/Net/Http/Client.php
+
+		-
+			message: "#^Access to offset string on an unknown class hash\\.$#"
+			count: 2
+			path: ../src/Net/Http/Client.php
+
+		-
+			message: "#^Default value of the parameter \\#2 \\$port \\(false\\) of method Net_Http_Client\\:\\:setProxy\\(\\) is incompatible with type int\\.$#"
+			count: 1
+			path: ../src/Net/Http/Client.php
+
+		-
+			message: "#^Method Net_Http_Client\\:\\:checkResponse\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: ../src/Net/Http/Client.php
+
+		-
+			message: "#^Method Net_Http_Client\\:\\:checkResponse\\(\\) has parameter \\$ch with no type specified\\.$#"
+			count: 1
+			path: ../src/Net/Http/Client.php
+
+		-
+			message: "#^Method Net_Http_Client\\:\\:delete\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: ../src/Net/Http/Client.php
+
+		-
+			message: "#^Method Net_Http_Client\\:\\:failOnError\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: ../src/Net/Http/Client.php
+
+		-
+			message: "#^Method Net_Http_Client\\:\\:followRedirectPath\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: ../src/Net/Http/Client.php
+
+		-
+			message: "#^Method Net_Http_Client\\:\\:get\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: ../src/Net/Http/Client.php
+
+		-
+			message: "#^Method Net_Http_Client\\:\\:getBody\\(\\) should return string but returns hash\\.$#"
+			count: 1
+			path: ../src/Net/Http/Client.php
+
+		-
+			message: "#^Method Net_Http_Client\\:\\:getHeader\\(\\) has parameter \\$header with no type specified\\.$#"
+			count: 1
+			path: ../src/Net/Http/Client.php
+
+		-
+			message: "#^Method Net_Http_Client\\:\\:getHeader\\(\\) should return string but return statement is missing\\.$#"
+			count: 1
+			path: ../src/Net/Http/Client.php
+
+		-
+			message: "#^Method Net_Http_Client\\:\\:getHeaders\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: ../src/Net/Http/Client.php
+
+		-
+			message: "#^Method Net_Http_Client\\:\\:getHeaders\\(\\) should return array but returns hash\\.$#"
+			count: 1
+			path: ../src/Net/Http/Client.php
+
+		-
+			message: "#^Method Net_Http_Client\\:\\:getInfo\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: ../src/Net/Http/Client.php
+
+		-
+			message: "#^Method Net_Http_Client\\:\\:getOptions\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: ../src/Net/Http/Client.php
+
+		-
+			message: "#^Method Net_Http_Client\\:\\:head\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: ../src/Net/Http/Client.php
+
+		-
+			message: "#^Method Net_Http_Client\\:\\:initializeRequest\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: ../src/Net/Http/Client.php
+
+		-
+			message: "#^Method Net_Http_Client\\:\\:parseBody\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: ../src/Net/Http/Client.php
+
+		-
+			message: "#^Method Net_Http_Client\\:\\:parseBody\\(\\) has parameter \\$body with no type specified\\.$#"
+			count: 1
+			path: ../src/Net/Http/Client.php
+
+		-
+			message: "#^Method Net_Http_Client\\:\\:parseBody\\(\\) has parameter \\$curl with no type specified\\.$#"
+			count: 1
+			path: ../src/Net/Http/Client.php
+
+		-
+			message: "#^Method Net_Http_Client\\:\\:parseHeader\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: ../src/Net/Http/Client.php
+
+		-
+			message: "#^Method Net_Http_Client\\:\\:parseHeader\\(\\) has parameter \\$curl with no type specified\\.$#"
+			count: 1
+			path: ../src/Net/Http/Client.php
+
+		-
+			message: "#^Method Net_Http_Client\\:\\:parseHeader\\(\\) has parameter \\$headers with no type specified\\.$#"
+			count: 1
+			path: ../src/Net/Http/Client.php
+
+		-
+			message: "#^Method Net_Http_Client\\:\\:post\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: ../src/Net/Http/Client.php
+
+		-
+			message: "#^Method Net_Http_Client\\:\\:post\\(\\) has parameter \\$data with no type specified\\.$#"
+			count: 1
+			path: ../src/Net/Http/Client.php
+
+		-
+			message: "#^Method Net_Http_Client\\:\\:put\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: ../src/Net/Http/Client.php
+
+		-
+			message: "#^Method Net_Http_Client\\:\\:setBasicAuth\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: ../src/Net/Http/Client.php
+
+		-
+			message: "#^Method Net_Http_Client\\:\\:setHeader\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: ../src/Net/Http/Client.php
+
+		-
+			message: "#^Method Net_Http_Client\\:\\:setHeaders\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: ../src/Net/Http/Client.php
+
+		-
+			message: "#^Method Net_Http_Client\\:\\:setHeaders\\(\\) has parameter \\$headers with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: ../src/Net/Http/Client.php
+
+		-
+			message: "#^Method Net_Http_Client\\:\\:setProxy\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: ../src/Net/Http/Client.php
+
+		-
+			message: "#^Method Net_Http_Client\\:\\:setSslCertificate\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: ../src/Net/Http/Client.php
+
+		-
+			message: "#^Method Net_Http_Client\\:\\:setSslCertificate\\(\\) has parameter \\$password with no type specified\\.$#"
+			count: 1
+			path: ../src/Net/Http/Client.php
+
+		-
+			message: "#^Method Net_Http_Client\\:\\:setSslCertificate\\(\\) has parameter \\$path with no type specified\\.$#"
+			count: 1
+			path: ../src/Net/Http/Client.php
+
+		-
+			message: "#^Method Net_Http_Client\\:\\:setSslVersion\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: ../src/Net/Http/Client.php
+
+		-
+			message: "#^Method Net_Http_Client\\:\\:setTimeout\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: ../src/Net/Http/Client.php
+
+		-
+			message: "#^Method Net_Http_Client\\:\\:setUserAgent\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: ../src/Net/Http/Client.php
+
+		-
+			message: "#^Method Net_Http_Client\\:\\:setVerifyPeer\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: ../src/Net/Http/Client.php
+
+		-
+			message: "#^Method Net_Http_Client\\:\\:setVerifyPeer\\(\\) has parameter \\$peer with no type specified\\.$#"
+			count: 1
+			path: ../src/Net/Http/Client.php
+
+		-
+			message: "#^PHPDoc tag @param has invalid value \\(boolean\\)\\: Unexpected token \"\\\\n\\\\t \", expected variable at offset 144$#"
+			count: 1
+			path: ../src/Net/Http/Client.php
+
+		-
+			message: "#^PHPDoc tag @param references unknown parameter\\: \\$query$#"
+			count: 1
+			path: ../src/Net/Http/Client.php
+
+		-
+			message: "#^Parameter \\#2 \\$array of function array_key_exists expects array, hash given\\.$#"
+			count: 1
+			path: ../src/Net/Http/Client.php
+
+		-
+			message: "#^Property Net_Http_Client\\:\\:\\$errorCode has no type specified\\.$#"
+			count: 1
+			path: ../src/Net/Http/Client.php
+
+		-
+			message: "#^Property Net_Http_Client\\:\\:\\$errorCode is unused\\.$#"
+			count: 1
+			path: ../src/Net/Http/Client.php
+
+		-
+			message: "#^Property Net_Http_Client\\:\\:\\$hasError is unused\\.$#"
+			count: 1
+			path: ../src/Net/Http/Client.php
+
+		-
+			message: "#^Property Net_Http_Client\\:\\:\\$headers \\(hash\\) does not accept array\\.$#"
+			count: 1
+			path: ../src/Net/Http/Client.php
+
+		-
+			message: "#^Property Net_Http_Client\\:\\:\\$headers has unknown class hash as its type\\.$#"
+			count: 1
+			path: ../src/Net/Http/Client.php
+
+		-
+			message: "#^Property Net_Http_Client\\:\\:\\$isComplete is never read, only written\\.$#"
+			count: 1
+			path: ../src/Net/Http/Client.php
+
+		-
+			message: "#^Property Net_Http_Client\\:\\:\\$options type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: ../src/Net/Http/Client.php
+
+		-
+			message: "#^Property Net_Http_Client\\:\\:\\$responseBody \\(hash\\) does not accept string\\.$#"
+			count: 1
+			path: ../src/Net/Http/Client.php
+
+		-
+			message: "#^Property Net_Http_Client\\:\\:\\$responseBody has unknown class hash as its type\\.$#"
+			count: 1
+			path: ../src/Net/Http/Client.php
+
+		-
+			message: "#^Property Net_Http_Client\\:\\:\\$responseHeaders \\(hash\\) does not accept array\\.$#"
+			count: 1
+			path: ../src/Net/Http/Client.php
+
+		-
+			message: "#^Property Net_Http_Client\\:\\:\\$responseHeaders has unknown class hash as its type\\.$#"
+			count: 1
+			path: ../src/Net/Http/Client.php
+
+		-
+			message: "#^Property Net_Http_Client\\:\\:\\$responseInfo type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: ../src/Net/Http/Client.php
+
+		-
+			message: "#^Undefined variable\\: \\$ch$#"
+			count: 1
+			path: ../src/Net/Http/Client.php
+
+		-
+			message: "#^Method Net_Http_Request\\:\\:__construct\\(\\) has parameter \\$method with no type specified\\.$#"
+			count: 1
+			path: ../src/Net/Http/Request.php
+
+		-
+			message: "#^Method Net_Http_Request\\:\\:__construct\\(\\) has parameter \\$url with no type specified\\.$#"
+			count: 1
+			path: ../src/Net/Http/Request.php
+
+		-
+			message: "#^Method Net_Http_Request\\:\\:getData\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: ../src/Net/Http/Request.php
+
+		-
+			message: "#^Method Net_Http_Request\\:\\:getHeader\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: ../src/Net/Http/Request.php
+
+		-
+			message: "#^Method Net_Http_Request\\:\\:getHeader\\(\\) has parameter \\$header with no type specified\\.$#"
+			count: 1
+			path: ../src/Net/Http/Request.php
+
+		-
+			message: "#^Method Net_Http_Request\\:\\:getHeaders\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: ../src/Net/Http/Request.php
+
+		-
+			message: "#^Method Net_Http_Request\\:\\:getMethod\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: ../src/Net/Http/Request.php
+
+		-
+			message: "#^Method Net_Http_Request\\:\\:getUrl\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: ../src/Net/Http/Request.php
+
+		-
+			message: "#^Method Net_Http_Request\\:\\:setBody\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: ../src/Net/Http/Request.php
+
+		-
+			message: "#^Method Net_Http_Request\\:\\:setBody\\(\\) has parameter \\$content with no type specified\\.$#"
+			count: 1
+			path: ../src/Net/Http/Request.php
+
+		-
+			message: "#^Method Net_Http_Request\\:\\:setBody\\(\\) has parameter \\$mime with no type specified\\.$#"
+			count: 1
+			path: ../src/Net/Http/Request.php
+
+		-
+			message: "#^Method Net_Http_Request\\:\\:setHeader\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: ../src/Net/Http/Request.php
+
+		-
+			message: "#^Method Net_Http_Request\\:\\:setHeader\\(\\) has parameter \\$header with no type specified\\.$#"
+			count: 1
+			path: ../src/Net/Http/Request.php
+
+		-
+			message: "#^Method Net_Http_Request\\:\\:setHeader\\(\\) has parameter \\$value with no type specified\\.$#"
+			count: 1
+			path: ../src/Net/Http/Request.php
+
+		-
+			message: "#^Method Net_Http_Request\\:\\:setHeaders\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: ../src/Net/Http/Request.php
+
+		-
+			message: "#^Method Net_Http_Request\\:\\:setHeaders\\(\\) has parameter \\$headers with no type specified\\.$#"
+			count: 1
+			path: ../src/Net/Http/Request.php
+
+		-
+			message: "#^Method Net_Http_Request\\:\\:setMethod\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: ../src/Net/Http/Request.php
+
+		-
+			message: "#^Method Net_Http_Request\\:\\:setMethod\\(\\) has parameter \\$method with no type specified\\.$#"
+			count: 1
+			path: ../src/Net/Http/Request.php
+
+		-
+			message: "#^Method Net_Http_Request\\:\\:setMime\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: ../src/Net/Http/Request.php
+
+		-
+			message: "#^Method Net_Http_Request\\:\\:setMime\\(\\) has parameter \\$mime with no type specified\\.$#"
+			count: 1
+			path: ../src/Net/Http/Request.php
+
+		-
+			message: "#^Method Net_Http_Request\\:\\:setParameter\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: ../src/Net/Http/Request.php
+
+		-
+			message: "#^Method Net_Http_Request\\:\\:setParameter\\(\\) has parameter \\$key with no type specified\\.$#"
+			count: 1
+			path: ../src/Net/Http/Request.php
+
+		-
+			message: "#^Method Net_Http_Request\\:\\:setParameter\\(\\) has parameter \\$value with no type specified\\.$#"
+			count: 1
+			path: ../src/Net/Http/Request.php
+
+		-
+			message: "#^Method Net_Http_Request\\:\\:setParameters\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: ../src/Net/Http/Request.php
+
+		-
+			message: "#^Method Net_Http_Request\\:\\:setParameters\\(\\) has parameter \\$parameters with no type specified\\.$#"
+			count: 1
+			path: ../src/Net/Http/Request.php
+
+		-
+			message: "#^Method Net_Http_Request\\:\\:setUrl\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: ../src/Net/Http/Request.php
+
+		-
+			message: "#^Method Net_Http_Request\\:\\:setUrl\\(\\) has parameter \\$url with no type specified\\.$#"
+			count: 1
+			path: ../src/Net/Http/Request.php
+
+		-
+			message: "#^Method Net_Http_Request\\:\\:setUserAgent\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: ../src/Net/Http/Request.php
+
+		-
+			message: "#^Method Net_Http_Request\\:\\:setUserAgent\\(\\) has parameter \\$value with no type specified\\.$#"
+			count: 1
+			path: ../src/Net/Http/Request.php
+
+		-
+			message: "#^Property Net_Http_Request\\:\\:\\$headers has no type specified\\.$#"
+			count: 1
+			path: ../src/Net/Http/Request.php
+
+		-
+			message: "#^Property Net_Http_Request\\:\\:\\$method has no type specified\\.$#"
+			count: 1
+			path: ../src/Net/Http/Request.php
+
+		-
+			message: "#^Property Net_Http_Request\\:\\:\\$parameters has no type specified\\.$#"
+			count: 1
+			path: ../src/Net/Http/Request.php
+
+		-
+			message: "#^Property Net_Http_Request\\:\\:\\$url has no type specified\\.$#"
+			count: 1
+			path: ../src/Net/Http/Request.php
+
+		-
+			message: "#^Method Net_Http_Response\\:\\:__construct\\(\\) has parameter \\$body with no type specified\\.$#"
+			count: 1
+			path: ../src/Net/Http/Response.php
+
+		-
+			message: "#^Method Net_Http_Response\\:\\:__construct\\(\\) has parameter \\$headers with no type specified\\.$#"
+			count: 1
+			path: ../src/Net/Http/Response.php
+
+		-
+			message: "#^Method Net_Http_Response\\:\\:__construct\\(\\) has parameter \\$status with no type specified\\.$#"
+			count: 1
+			path: ../src/Net/Http/Response.php
+
+		-
+			message: "#^Method Net_Http_Response\\:\\:getBody\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: ../src/Net/Http/Response.php
+
+		-
+			message: "#^Method Net_Http_Response\\:\\:getHeader\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: ../src/Net/Http/Response.php
+
+		-
+			message: "#^Method Net_Http_Response\\:\\:getHeader\\(\\) has parameter \\$header with no type specified\\.$#"
+			count: 1
+			path: ../src/Net/Http/Response.php
+
+		-
+			message: "#^Method Net_Http_Response\\:\\:getHeaders\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: ../src/Net/Http/Response.php
+
+		-
+			message: "#^Method Net_Http_Response\\:\\:getStatus\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: ../src/Net/Http/Response.php
+
+		-
+			message: "#^Method Net_Http_Response\\:\\:isError\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: ../src/Net/Http/Response.php
+
+		-
+			message: "#^Method Net_Http_Response\\:\\:isOk\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: ../src/Net/Http/Response.php
+
+		-
+			message: "#^Property Net_Http_Response\\:\\:\\$body has no type specified\\.$#"
+			count: 1
+			path: ../src/Net/Http/Response.php
+
+		-
+			message: "#^Property Net_Http_Response\\:\\:\\$headers has no type specified\\.$#"
+			count: 1
+			path: ../src/Net/Http/Response.php
+
+		-
+			message: "#^Property Net_Http_Response\\:\\:\\$message has no type specified\\.$#"
+			count: 1
+			path: ../src/Net/Http/Response.php
+
+		-
+			message: "#^Property Net_Http_Response\\:\\:\\$message is unused\\.$#"
+			count: 1
+			path: ../src/Net/Http/Response.php
+
+		-
+			message: "#^Property Net_Http_Response\\:\\:\\$status has no type specified\\.$#"
+			count: 1
+			path: ../src/Net/Http/Response.php
