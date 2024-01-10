@@ -1,18 +1,19 @@
 <?xml version="1.0"?>
-<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" colors="true" xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/9.3/phpunit.xsd">
-    <coverage>
-        <include>
-            <directory suffix=".php">src</directory>
-        </include>
-    </coverage>
+<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" colors="true"
+         xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/10.5/phpunit.xsd">
     <php>
         <ini name="error_reporting" value="E_ALL"/>
         <ini name="display_errors" value="1"/>
     </php>
     <testsuites>
         <testsuite name="main">
-            <directory suffix="Test.php">test</directory>
+            <directory>test</directory>
         </testsuite>
     </testsuites>
     <logging/>
+    <source>
+        <include>
+            <directory>src</directory>
+        </include>
+    </source>
 </phpunit>
